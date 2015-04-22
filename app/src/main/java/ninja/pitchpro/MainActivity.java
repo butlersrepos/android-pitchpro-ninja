@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.example.sarophym.myapplication;
+package ninja.pitchpro;
 
 import android.accounts.AccountManager;
 import android.app.Activity;
@@ -42,7 +42,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sarophym.myapplication.util.ImageCache;
+import ninja.pitchpro.util.ImageCache;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
@@ -59,10 +59,10 @@ import com.google.api.services.youtube.model.PlaylistItemListResponse;
 import com.google.api.services.youtube.model.Video;
 import com.google.api.services.youtube.model.VideoListResponse;
 import com.google.api.services.youtube.model.VideoSnippet;
-import com.example.sarophym.myapplication.util.ImageFetcher;
-import com.example.sarophym.myapplication.util.Upload;
-import com.example.sarophym.myapplication.util.Utils;
-import com.example.sarophym.myapplication.util.VideoData;
+import ninja.pitchpro.util.ImageFetcher;
+import ninja.pitchpro.util.Upload;
+import ninja.pitchpro.util.Utils;
+import ninja.pitchpro.util.VideoData;
 
 import java.io.IOException;
 import java.util.ArrayList;

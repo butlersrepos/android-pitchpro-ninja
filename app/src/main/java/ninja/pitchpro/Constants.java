@@ -12,14 +12,18 @@
  * the License.
  */
 
-package com.example.sarophym.myapplication;
+package ninja.pitchpro;
 
-import com.google.android.gms.common.Scopes;
-import com.google.api.services.youtube.YouTubeScopes;
-
-public class Auth {
-    // Register an API key here: https://code.google.com/apis/console
-    public static final String KEY = "Replace me with your API key";
-
-    public static final String[] SCOPES = {Scopes.PROFILE, YouTubeScopes.YOUTUBE};
+/**
+ * @author Ibrahim Ulukaya <ulukaya@google.com>
+ *         <p/>
+ *         This class hold constants.
+ */
+public class Constants {
+    public static final int MAX_KEYWORD_LENGTH = 30;
+    public static final String DEFAULT_KEYWORD = "pitchpro";
+    // A playlist ID is a string that begins with PL. You must replace this string with the correct
+    // playlist ID for the app to work
+    public static final String UPLOAD_PLAYLIST = "PLI_S0_r3CL0sMytaXOnRuFye6_tL2X6Qq";
+    public static final String APP_NAME = "pitchpro-ninja";
 }

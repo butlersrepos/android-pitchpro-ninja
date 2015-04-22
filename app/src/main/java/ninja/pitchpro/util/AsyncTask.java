@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.sarophym.myapplication.util;
+package ninja.pitchpro.util;
 
 import android.annotation.TargetApi;
 import android.os.Handler;

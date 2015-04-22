@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.example.sarophym.myapplication.util;
+package ninja.pitchpro.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -21,8 +21,8 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.util.Log;
 
-import com.example.sarophym.myapplication.BuildConfig;
-import com.example.sarophym.myapplication.BuildConfig;
+import ninja.pitchpro.BuildConfig;
+import ninja.pitchpro.BuildConfig;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

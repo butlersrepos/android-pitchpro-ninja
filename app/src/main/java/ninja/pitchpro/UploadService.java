@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.example.sarophym.myapplication;
+package ninja.pitchpro;
 
 import android.app.IntentService;
 import android.content.Intent;

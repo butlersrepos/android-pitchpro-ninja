@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.example.sarophym.myapplication.util;
+package ninja.pitchpro.util;
 
 import com.google.api.services.youtube.model.Video;
 import com.google.api.services.youtube.model.VideoSnippet;

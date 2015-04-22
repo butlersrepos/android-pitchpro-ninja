@@ -12,9 +12,9 @@
  * the License.
  */
 
-package com.example.sarophym.myapplication.util;
+package ninja.pitchpro.util;
 
-import com.example.sarophym.myapplication.Constants;
+import ninja.pitchpro.Constants;
 
 public class Upload {
     public static String generateKeywordFromPlaylistId(String playlistId) {

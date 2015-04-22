@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.example.sarophym.myapplication;
+package ninja.pitchpro;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -37,7 +37,7 @@ import com.google.api.services.youtube.model.Video;
 import com.google.api.services.youtube.model.VideoListResponse;
 import com.google.api.services.youtube.model.VideoSnippet;
 import com.google.api.services.youtube.model.VideoStatus;
-import com.example.sarophym.myapplication.util.Upload;
+import ninja.pitchpro.util.Upload;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;

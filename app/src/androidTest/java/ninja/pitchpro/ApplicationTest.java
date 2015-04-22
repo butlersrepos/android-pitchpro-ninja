@@ -1,4 +1,4 @@
-package com.example.sarophym.myapplication;
+package ninja.pitchpro;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.example.sarophym.myapplication;
+package ninja.pitchpro;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -29,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
@@ -36,9 +37,12 @@ import com.google.android.gms.drive.Drive;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.PlusOneButton;
 import com.google.android.gms.plus.model.people.Person;
-import com.example.sarophym.myapplication.util.ImageFetcher;
-import com.example.sarophym.myapplication.util.ImageWorker;
-import com.example.sarophym.myapplication.util.VideoData;
+import ninja.pitchpro.util.ImageFetcher;
+import ninja.pitchpro.util.ImageWorker;
+import ninja.pitchpro.util.VideoData;
+import com.google.android.youtube.player.YouTubeApiServiceUtil;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.api.services.youtube.YouTube;
 
 import java.util.List;
 
@@ -64,6 +68,7 @@ public class UploadsListFragment extends Fragment implements ConnectionCallbacks
         super.onCreate(savedInstanceState);
         mPlusClient = new GoogleApiClient.Builder(getActivity(), this, this)
                 .addScope(Plus.SCOPE_PLUS_PROFILE)
+                .addApi(Plus.API)
                 .build();
     }
 

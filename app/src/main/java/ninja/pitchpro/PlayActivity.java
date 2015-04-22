@@ -1,4 +1,4 @@
-package com.example.sarophym.myapplication;
+package ninja.pitchpro;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
@@ -21,8 +21,8 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccoun
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
-import com.example.sarophym.myapplication.util.ImageFetcher;
-import com.example.sarophym.myapplication.util.VideoData;
+import ninja.pitchpro.util.ImageFetcher;
+import ninja.pitchpro.util.VideoData;
 
 /*
  * Copyright (c) 2013 Google Inc.

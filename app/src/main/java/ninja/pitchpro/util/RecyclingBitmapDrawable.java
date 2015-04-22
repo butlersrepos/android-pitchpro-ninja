@@ -12,14 +12,14 @@
  * the License.
  */
 
-package com.example.sarophym.myapplication.util;
+package ninja.pitchpro.util;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 
-import com.example.sarophym.myapplication.BuildConfig;
+import ninja.pitchpro.BuildConfig;
 
 
 /**

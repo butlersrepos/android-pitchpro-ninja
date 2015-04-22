@@ -12,18 +12,14 @@
  * the License.
  */
 
-package com.example.sarophym.myapplication;
+package ninja.pitchpro;
 
-/**
- * @author Ibrahim Ulukaya <ulukaya@google.com>
- *         <p/>
- *         This class hold constants.
- */
-public class Constants {
-    public static final int MAX_KEYWORD_LENGTH = 30;
-    public static final String DEFAULT_KEYWORD = "ytdl";
-    // A playlist ID is a string that begins with PL. You must replace this string with the correct
-    // playlist ID for the app to work
-    public static final String UPLOAD_PLAYLIST = "Replace me with the playlist ID you want to upload into";
-    public static final String APP_NAME = "ytd-android";
+import com.google.android.gms.common.Scopes;
+import com.google.api.services.youtube.YouTubeScopes;
+
+public class Auth {
+    // Register an API key here: https://code.google.com/apis/console
+    public static final String KEY = "128970536501-bhulf6ignoe3ai56regtopfiesb103jn.apps.googleusercontent.com";
+
+    public static final String[] SCOPES = {Scopes.PROFILE, YouTubeScopes.YOUTUBE};
 }

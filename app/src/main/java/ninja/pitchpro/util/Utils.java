@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.example.sarophym.myapplication.util;
+package ninja.pitchpro.util;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -24,7 +24,7 @@ import android.widget.Toast;
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.api.client.googleapis.json.GoogleJsonError;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
-import com.example.sarophym.myapplication.R;
+import ninja.pitchpro.R;
 
 /**
  * Class containing some static utility methods.

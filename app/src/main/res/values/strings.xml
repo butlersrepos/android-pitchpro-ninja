@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">YouTube Direct Lite</string>
+    <string name="app_name">PitchPro Ninja Mobile</string>
     <string name="button_authorize">Authorize</string>
     <string name="button_record">RECORD</string>
     <string name="button_pick">GALLERY</string>

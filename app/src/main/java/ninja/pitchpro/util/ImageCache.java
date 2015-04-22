@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.example.sarophym.myapplication.util;
+package ninja.pitchpro.util;
 
 import android.annotation.TargetApi;
 import android.app.Fragment;
@@ -28,7 +28,7 @@ import android.os.StatFs;
 import android.support.v4.util.LruCache;
 import android.util.Log;
 
-import com.example.sarophym.myapplication.BuildConfig;
+import ninja.pitchpro.BuildConfig;
 
 import java.io.File;
 import java.io.FileDescriptor;

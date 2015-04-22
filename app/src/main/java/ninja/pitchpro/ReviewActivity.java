@@ -1,4 +1,4 @@
-package com.example.sarophym.myapplication;
+package ninja.pitchpro;
 
 import android.app.Activity;
 import android.content.Intent;

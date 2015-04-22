@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.example.sarophym.myapplication.util;
+package ninja.pitchpro.util;
 
 import android.app.FragmentManager;
 import android.content.Context;
@@ -26,7 +26,7 @@ import android.graphics.drawable.TransitionDrawable;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.example.sarophym.myapplication.BuildConfig;
+import ninja.pitchpro.BuildConfig;
 
 import java.lang.ref.WeakReference;
 
