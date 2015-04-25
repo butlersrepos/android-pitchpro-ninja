@@ -68,16 +68,18 @@ public class ReviewActivity extends Activity {
 
     public void uploadVideo(View view) {
         if (mChosenAccountName == null) {
+            System.out.println("No account name chosen. Returning.");
             return;
         }
         // if a video is picked or recorded.
         if (mFileUri != null) {
+            System.out.println("Have video URI, uploading.");
             Intent uploadIntent = new Intent(this, UploadService.class);
             uploadIntent.setData(mFileUri);
+            uploadIntent.setAction(Intent.ACTION_SEND);
             uploadIntent.putExtra(MainActivity.ACCOUNT_KEY, mChosenAccountName);
             startService(uploadIntent);
-            Toast.makeText(this, R.string.youtube_upload_started,
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.youtube_upload_started, Toast.LENGTH_LONG).show();
             // Go back to MainActivity after upload
             finish();
         }

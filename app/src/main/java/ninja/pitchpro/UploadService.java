@@ -58,7 +58,7 @@ public class UploadService extends IntentService {
      * max number of retry attempts
      */
     private static final int MAX_RETRY = 3;
-    private static final String TAG = "UploadService";
+    private static final String TAG = "Uploader Service";
     /**
      * processing start time
      */
@@ -72,7 +72,13 @@ public class UploadService extends IntentService {
     private int mUploadAttemptCount;
 
     public UploadService() {
-        super("YTUploadService");
+        super("PitchPro Uploader");
+    }
+
+    @Override
+    public void onStart(Intent intent, int startId) {
+        super.onStart(intent, startId);
+        Log.d(TAG, "Start called!");
     }
 
     private static void zzz(int duration) throws InterruptedException {
@@ -93,6 +99,7 @@ public class UploadService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        Log.d(TAG, "Handling uploader intent");
         Uri fileUri = intent.getData();
         String chosenAccountName = intent.getStringExtra(MainActivity.ACCOUNT_KEY);
 
@@ -108,6 +115,7 @@ public class UploadService extends IntentService {
 
 
         try {
+            Log.d(TAG, "Trying uploader now.");
             tryUploadAndShowSelectableNotification(fileUri, youtube);
         } catch (InterruptedException e) {
             // ignore
