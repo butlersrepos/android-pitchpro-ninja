@@ -37,9 +37,11 @@ import com.google.android.gms.drive.Drive;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.PlusOneButton;
 import com.google.android.gms.plus.model.people.Person;
+
 import ninja.pitchpro.util.ImageFetcher;
 import ninja.pitchpro.util.ImageWorker;
 import ninja.pitchpro.util.VideoData;
+
 import com.google.android.youtube.player.YouTubeApiServiceUtil;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.api.services.youtube.YouTube;
@@ -98,19 +100,15 @@ public class UploadsListFragment extends Fragment implements ConnectionCallbacks
 
     public void setProfileInfo() {
         if (!mPlusClient.isConnected() || Plus.PeopleApi.getCurrentPerson(mPlusClient) == null) {
-            ((ImageView) getView().findViewById(R.id.avatar))
-                    .setImageDrawable(null);
-            ((TextView) getView().findViewById(R.id.display_name))
-                    .setText(R.string.not_signed_in);
+            ((ImageView) getView().findViewById(R.id.avatar)).setImageDrawable(null);
+            ((TextView) getView().findViewById(R.id.display_name)).setText(R.string.not_signed_in);
         } else {
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mPlusClient);
             if (currentPerson.hasImage()) {
-                mImageFetcher.loadImage(currentPerson.getImage().getUrl(),
-                        ((ImageView) getView().findViewById(R.id.avatar)));
+                mImageFetcher.loadImage(currentPerson.getImage().getUrl(), ((ImageView) getView().findViewById(R.id.avatar)));
             }
             if (currentPerson.hasDisplayName()) {
-                ((TextView) getView().findViewById(R.id.display_name))
-                        .setText(currentPerson.getDisplayName());
+                ((TextView) getView().findViewById(R.id.display_name)).setText(currentPerson.getDisplayName());
             }
         }
     }
@@ -145,15 +143,11 @@ public class UploadsListFragment extends Fragment implements ConnectionCallbacks
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         if (connectionResult.hasResolution()) {
-            Toast.makeText(getActivity(),
-                    R.string.connection_to_google_play_failed, Toast.LENGTH_SHORT)
-                    .show();
+            Toast.makeText(getActivity(), R.string.connection_to_google_play_failed, Toast.LENGTH_SHORT).show();
 
-            Log.e(TAG,
-                    String.format(
-                            "Connection to Play Services Failed, error: %d, reason: %s",
-                            connectionResult.getErrorCode(),
-                            connectionResult.toString()));
+            Log.e(TAG, String.format("Connection to Play Services Failed, error: %d, reason: %s",
+                    connectionResult.getErrorCode(),
+                    connectionResult.toString()));
             try {
                 connectionResult.startResolutionForResult(getActivity(), 0);
             } catch (IntentSender.SendIntentException e) {
@@ -211,29 +205,20 @@ public class UploadsListFragment extends Fragment implements ConnectionCallbacks
         }
 
         @Override
-        public View getView(final int position, View convertView,
-                            ViewGroup container) {
+        public View getView(final int position, View convertView, ViewGroup container) {
             if (convertView == null) {
-                convertView = LayoutInflater.from(getActivity()).inflate(
-                        R.layout.list_item, container, false);
+                convertView = LayoutInflater.from(getActivity()).inflate(R.layout.list_item, container, false);
             }
 
             VideoData video = mVideos.get(position);
-            ((TextView) convertView.findViewById(android.R.id.text1))
-                    .setText(video.getTitle());
-            mImageFetcher.loadImage(video.getThumbUri(),
-                    (ImageView) convertView.findViewById(R.id.thumbnail));
-            if (mPlusClient.isConnected()) {
-                ((PlusOneButton) convertView.findViewById(R.id.plus_button))
-                        .initialize(video.getWatchUri(), null);
-            }
-            convertView.findViewById(R.id.main_target).setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            mCallbacks.onVideoSelected(mVideos.get(position));
-                        }
-                    });
+            ((TextView) convertView.findViewById(android.R.id.text1)).setText(video.getTitle());
+            mImageFetcher.loadImage(video.getThumbUri(), (ImageView) convertView.findViewById(R.id.thumbnail));
+            convertView.findViewById(R.id.main_target).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCallbacks.onVideoSelected(mVideos.get(position));
+                }
+            });
             return convertView;
         }
     }

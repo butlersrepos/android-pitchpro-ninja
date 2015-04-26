@@ -79,7 +79,7 @@ public class ReviewActivity extends Activity {
             uploadIntent.setAction(Intent.ACTION_SEND);
             uploadIntent.putExtra(MainActivity.ACCOUNT_KEY, mChosenAccountName);
             startService(uploadIntent);
-            Toast.makeText(this, R.string.youtube_upload_started, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.video_upload_started, Toast.LENGTH_LONG).show();
             // Go back to MainActivity after upload
             finish();
         }

@@ -380,7 +380,7 @@ public class MainActivity extends Activity implements UploadsListFragment.Callba
 
         }.execute((Void) null);
         Toast.makeText(this,
-                R.string.video_submitted_to_ytdl, Toast.LENGTH_LONG)
+                R.string.video_submitted_to_pitchpro, Toast.LENGTH_LONG)
                 .show();
     }
 

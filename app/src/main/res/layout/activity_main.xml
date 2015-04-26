@@ -8,18 +8,10 @@
     android:showDividers="middle"
     android:verticalSpacing="10dp">
 
-    <fragment
-        android:id="@+id/list_fragment"
-        android:name="ninja.pitchpro.UploadsListFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        tools:layout="@layout/list_fragment" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#eee"
+        android:background="#111"
         android:divider="?android:dividerVertical"
         android:showDividers="middle">
 
@@ -58,4 +50,11 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <fragment
+        android:id="@+id/list_fragment"
+        android:name="ninja.pitchpro.UploadsListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:layout="@layout/list_fragment" />
 </LinearLayout>

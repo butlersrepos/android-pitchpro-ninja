@@ -21,22 +21,9 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccoun
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
+
 import ninja.pitchpro.util.ImageFetcher;
 import ninja.pitchpro.util.VideoData;
-
-/*
- * Copyright (c) 2013 Google Inc.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- */
 
 /**
  * @author Ibrahim Ulukaya <ulukaya@google.com>
@@ -45,161 +32,161 @@ import ninja.pitchpro.util.VideoData;
  *         YT Android Player.
  */
 public class PlayActivity extends Activity implements
-        PlayerStateChangeListener, OnFullscreenListener {
+		PlayerStateChangeListener, OnFullscreenListener {
 
-    private static final String YOUTUBE_FRAGMENT_TAG = "youtube";
-    final HttpTransport transport = AndroidHttp.newCompatibleTransport();
-    final JsonFactory jsonFactory = new GsonFactory();
-    GoogleAccountCredential credential;
-    private YouTubePlayer mYouTubePlayer;
-    private boolean mIsFullScreen = false;
-    private Intent intent;
+	private static final String YOUTUBE_FRAGMENT_TAG = "youtube";
+	final HttpTransport transport = AndroidHttp.newCompatibleTransport();
+	final JsonFactory jsonFactory = new GsonFactory();
+	GoogleAccountCredential credential;
+	private YouTubePlayer mYouTubePlayer;
+	private boolean mIsFullScreen = false;
+	private Intent intent;
 
-    public PlayActivity() {
-    }
+	public PlayActivity() {}
 
-    @Override
-    public void onStart() {
-        super.onStart();
+	@Override
+	public void onStart() {
+		super.onStart();
+	}
 
-    }
+	@Override
+	public void onStop() {
+		super.onStop();
+	}
 
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
+	public void directLite(View view) {
+		this.setResult(RESULT_OK, intent);
+		finish();
+	}
 
-    public void directLite(View view) {
-        this.setResult(RESULT_OK, intent);
-        finish();
-    }
+	public void panToVideo(final String youtubeId) {
+		popPlayerFromBackStack();
+		YouTubePlayerFragment playerFragment = YouTubePlayerFragment.newInstance();
 
-    public void panToVideo(final String youtubeId) {
-        popPlayerFromBackStack();
-        YouTubePlayerFragment playerFragment = YouTubePlayerFragment
-                .newInstance();
-        getFragmentManager()
-                .beginTransaction()
-                .replace(R.id.detail_container, playerFragment,
-                        YOUTUBE_FRAGMENT_TAG)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack(null).commit();
-        playerFragment.initialize(Auth.KEY,
-                new YouTubePlayer.OnInitializedListener() {
-                    @Override
-                    public void onInitializationSuccess(
-                            YouTubePlayer.Provider provider,
-                            YouTubePlayer youTubePlayer, boolean b) {
-                        youTubePlayer.loadVideo(youtubeId);
-                        mYouTubePlayer = youTubePlayer;
-                        youTubePlayer
-                                .setPlayerStateChangeListener(PlayActivity.this);
-                        youTubePlayer
-                                .setOnFullscreenListener(PlayActivity.this);
-                    }
+		getFragmentManager().beginTransaction()
+				.replace(R.id.detail_container, playerFragment, YOUTUBE_FRAGMENT_TAG)
+				.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+				.addToBackStack(null).commit();
 
-                    @Override
-                    public void onInitializationFailure(
-                            YouTubePlayer.Provider provider,
-                            YouTubeInitializationResult result) {
-                        showErrorToast(result.toString());
-                    }
-                });
-    }
+		playerFragment.initialize(Auth.KEY, new YouTubePlayer.OnInitializedListener() {
+			@Override
+			public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+				youTubePlayer.loadVideo(youtubeId);
+				mYouTubePlayer = youTubePlayer;
+				youTubePlayer.setPlayerStateChangeListener(PlayActivity.this);
+				youTubePlayer.setOnFullscreenListener(PlayActivity.this);
+			}
 
-    public boolean popPlayerFromBackStack() {
-        if (mIsFullScreen) {
-            mYouTubePlayer.setFullscreen(false);
-            return false;
-        }
-        if (getFragmentManager().findFragmentByTag(YOUTUBE_FRAGMENT_TAG) != null) {
-            getFragmentManager().popBackStack();
-            return false;
-        }
-        return true;
-    }
+			@Override
+			public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult result) {
+				showErrorToast(result.toString());
+			}
+		});
+	}
 
-    @Override
-    public void onAdStarted() {
-    }
+	public boolean popPlayerFromBackStack() {
+		if (mIsFullScreen) {
+			mYouTubePlayer.setFullscreen(false);
+			return false;
+		}
+		if (getFragmentManager().findFragmentByTag(YOUTUBE_FRAGMENT_TAG) != null) {
+			getFragmentManager().popBackStack();
+			return false;
+		}
+		return true;
+	}
 
-    @Override
-    public void onError(YouTubePlayer.ErrorReason errorReason) {
-        showErrorToast(errorReason.toString());
-    }
+	@Override
+	public void onAdStarted() {}
 
-    private void showErrorToast(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
-                .show();
-    }
+	@Override
+	public void onError(YouTubePlayer.ErrorReason errorReason) {
+		showErrorToast(errorReason.toString());
+	}
 
-    @Override
-    public void onLoaded(String arg0) {
-    }
+	private void showErrorToast(String message) {
+		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+	}
 
-    @Override
-    public void onLoading() {
-    }
+	@Override
+	public void onLoaded(String arg0) {
+	}
 
-    @Override
-    public void onVideoEnded() {
-        // popPlayerFromBackStack();
-    }
+	@Override
+	public void onLoading() {}
 
-    @Override
-    public void onVideoStarted() {
-    }
+	@Override
+	public void onVideoEnded() {
+		// popPlayerFromBackStack();
+	}
 
-    @Override
-    public void onFullscreen(boolean fullScreen) {
-        mIsFullScreen = fullScreen;
-    }
+	@Override
+	public void onVideoStarted() {}
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        setContentView(R.layout.activity_play);
-        intent = getIntent();
-        Button submitButton = (Button) findViewById(R.id.submit_button);
-        if (Intent.ACTION_VIEW.equals(intent.getAction())) {
-            submitButton.setVisibility(View.GONE);
-            setTitle(R.string.playing_uploaded_video);
-        }
-        String youtubeId = intent.getStringExtra(MainActivity.YOUTUBE_ID);
-        panToVideo(youtubeId);
-    }
+	@Override
+	public void onFullscreen(boolean fullScreen) {
+		mIsFullScreen = fullScreen;
+	}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.play, menu);
-        return true;
-    }
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		setContentView(R.layout.activity_play);
+		intent = getIntent();
+		Button submitButton = (Button) findViewById(R.id.submit_button);
+		if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+			submitButton.setVisibility(View.GONE);
+			setTitle(R.string.playing_uploaded_video);
+		}
+		String youtubeId = intent.getStringExtra(MainActivity.YOUTUBE_ID);
+		panToVideo(youtubeId);
+	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.play, menu);
+		return true;
+	}
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        NavUtils.navigateUpFromSameTask(this);
-    }
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			// Respond to the action bar's Up/Home button
+			case android.R.id.home:
+				NavUtils.navigateUpFromSameTask(this);
+				return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 
-    public interface Callbacks {
-        public ImageFetcher onGetImageFetcher();
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		NavUtils.navigateUpFromSameTask(this);
+	}
 
-        public void onVideoSelected(VideoData video);
+	public interface Callbacks {
+		public ImageFetcher onGetImageFetcher();
 
-        public void onResume();
+		public void onVideoSelected(VideoData video);
 
-    }
+		public void onResume();
+
+	}
 }
+
+/*
+ * Copyright (c) 2013 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */

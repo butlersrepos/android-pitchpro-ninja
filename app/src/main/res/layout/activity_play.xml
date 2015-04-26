@@ -41,7 +41,8 @@
             android:padding="8dp"
             android:textAppearance="?android:textAppearanceLarge"
             android:textColorHint="#c00"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="#111"/>
     </LinearLayout>
 
 </LinearLayout>

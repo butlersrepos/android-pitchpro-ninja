@@ -145,8 +145,7 @@ public class UploadService extends IntentService {
         }
     }
 
-    private void tryShowSelectableNotification(final String videoId, final YouTube youtube)
-            throws InterruptedException {
+    private void tryShowSelectableNotification(final String videoId, final YouTube youtube) throws InterruptedException {
         mStartTime = System.currentTimeMillis();
         boolean processed = false;
         while (!processed) {

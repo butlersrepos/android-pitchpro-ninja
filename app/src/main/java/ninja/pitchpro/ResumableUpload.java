@@ -89,7 +89,7 @@ public class ResumableUpload {
         PendingIntent contentIntent = PendingIntent.getActivity(context,
                 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         builder.setContentTitle(context.getString(R.string.youtube_upload))
-                .setContentText(context.getString(R.string.youtube_upload_started))
+                .setContentText(context.getString(R.string.video_upload_started))
                 .setSmallIcon(R.mipmap.ic_stat_device_access_video).setContentIntent(contentIntent).setStyle(new NotificationCompat.BigPictureStyle().bigPicture(thumbnail));
         notifyManager.notify(UPLOAD_NOTIFICATION_ID, builder.build());
 
